@@ -1,0 +1,9 @@
+{
+        "name": "ionos.com",
+        "ipv4": {
+			"url": "update_ionos.sh"
+		},
+		"ipv6": {
+			"url": "update_ionos.sh"
+		}
+}

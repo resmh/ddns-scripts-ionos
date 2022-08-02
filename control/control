@@ -1,0 +1,14 @@
+Package: ddns-scripts-ionos
+Depends: ddns-scripts-services
+Source: feeds/resmh/ddns-scripts-ionos
+SourceName: ddns-scripts-ionos
+Section: utils
+Maintainer: Michael Hammes
+Architecture: all
+Description: Dynamic DNS updates using the IONOS API (note: neither official nor affiliated).
+Installed-Size: 36864
+Filename: ddns-scripts-ionos.ipk
+Version: 0.1.0
+SourceDateEpoch: 
+Size: 
+SHA256sum: 
