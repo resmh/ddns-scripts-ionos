@@ -1,5 +1,5 @@
 # ddns-scripts-ionos
-The script at hand permits to use the IONOS DNS API in order to configure dynamic addresses. Please note: IONOS is a registered trademark of IONOS SE. The script is neither affiliated with nor approved by IONOS SE.
+The script at hand permits to use the IONOS DNS API in order to configure dynamic addresses. Please note: IONOS is a registered trademark of IONOS SE. The script is neither affiliated with nor endorsed by IONOS SE.
 
 ## Usage
 Follow the official usage guide to obtain the access token to be pasted as password. Optionally set additional parameters to ```privatedual``` in order to add the selected interface's IPv4 address to the DNS record.
