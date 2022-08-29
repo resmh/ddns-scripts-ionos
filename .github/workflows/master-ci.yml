@@ -1,0 +1,40 @@
+name: master-CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Pack ddns-scripts-ionos.ipk
+        uses: resmh/action-packipk@master
+        with:
+          pkgname: ddns-scripts-ionos
+          pkgrepo: 1
+          pkggpgrepokey: ${{ secrets.GPGREPOKEY }}
+          pkgsignifyrepokey: ${{ secrets.SIGNIFYREPOKEY }}
+      
+      - name: Release ddns-scripts-ionos.ipk
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Automated Release"
+          files: |
+            ddns-scripts-ionos.ipk
+            Packages
+            Packages.asc
+            Packages.sig
+            ddns_scripts_ionos.gpg.pub
+            ddns_scripts_ionos.signify.pub
