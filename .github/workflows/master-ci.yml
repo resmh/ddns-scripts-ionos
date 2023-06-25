@@ -11,20 +11,27 @@ on:
 jobs:
 
   build:
+    permissions:
+      contents: write
+      pull-requests: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Pack ddns-scripts-ionos.ipk
-        uses: resmh/action-packipk@master
+      - name: Pack ipk
+        uses: resmh/action-ipkpack@master
         with:
-          pkgname: ddns-scripts-ionos
-          pkgrepo: 1
-          pkggpgrepokey: ${{ secrets.GPGREPOKEY }}
-          pkgsignifyrepokey: ${{ secrets.SIGNIFYREPOKEY }}
+          timestamp: 1
+          timestamp_path: 1
+          
+      - name: Create single package repository
+        uses: resmh/action-ipkrepo@main
+        with:
+          privategpg: ${{ secrets.GPGREPOKEY }}
+          privatesignify: ${{ secrets.SIGNIFYREPOKEY }}
       
-      - name: Release ddns-scripts-ionos.ipk
+      - name: Release ipk and index
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
